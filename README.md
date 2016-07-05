@@ -4,7 +4,7 @@ A lint plugin for fis3 to validate html file.
 
 ## usage
 
-    $ npm install -g fis3-lint-htmlhin
+    $ npm i -g fis3-lint-htmlhint
 
 ```
 // fis-conf.js
