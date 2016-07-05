@@ -32,19 +32,18 @@ fis.match('*.html', {
 [more options](https://github.com/yaniswang/HTMLHint/wiki/Usage)
 
 ## how to use .htmlhintrc
-it seems HTMLHint Module only support .htmlhintrc in cli
-we can create a function like this
+it seems HTMLHint Module only support .htmlhintrc in cli, anyway we can use thishack
 ```
 // fis-conf.js
 
+// first we create a function like this
 function readConfig(file) {
     try {
       return JSON.parse(require('fs').readFileSync(file));
     }catch(_){}
 }
 
-then
-
+// then
 var htmlhintConf = {
   rules: readConfig('.htmlhintrcx'),
 };
