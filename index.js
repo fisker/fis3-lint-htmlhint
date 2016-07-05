@@ -16,7 +16,7 @@ module.exports = function(content, file, conf){
 
   results.forEach(function(msg) {
     if (msg.type === 'error') {
-      errorLength ++;
+      errorCount ++;
     }
   });
 
