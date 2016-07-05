@@ -1,6 +1,6 @@
 {
   "name": "fis3-lint-htmlhint",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "a html linter plugin of fis3 based on htmlhint",
   "main": "index.js",
   "repository": {
