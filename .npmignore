@@ -1,3 +1,5 @@
+.npmignore
+.editorconfig
 /node_modules
 /npm-debug.log
 /publish.bat
