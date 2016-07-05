@@ -45,7 +45,7 @@ function readConfig(file) {
 
 // then
 var htmlhintConf = {
-  rules: readConfig('.htmlhintrcx'),
+  rules: readConfig('.htmlhintrc'),
 };
 ```
 
