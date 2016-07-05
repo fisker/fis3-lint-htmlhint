@@ -1,6 +1,6 @@
 {
   "name": "fis3-lint-htmlhint",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a html linter plugin of fis3 based on htmlhint",
   "main": "index.js",
   "repository": {
@@ -23,5 +23,6 @@
   },
   "bugs": {
     "url": "https://github.com/fisker/fis3-lint-htmlhint/issues"
-  }
+  },
+  "readme": "README.md"
 }
