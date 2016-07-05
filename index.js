@@ -12,7 +12,7 @@ module.exports = function(content, file, conf){
 
   var ruleset = conf.rules;
   var results = HTMLHint.verify(content, ruleset);
-  var errorLength = 0;
+  var errorCount = 0;
 
   results.forEach(function(msg) {
     if (msg.type === 'error') {
@@ -20,11 +20,9 @@ module.exports = function(content, file, conf){
     }
   });
 
-  if (results && results.length) {
-    console.log(HTMLHint.format(results));
-  }
+  console.log(HTMLHint.format(results));
 
-  if (errorLength) {
+  if (errorCount) {
     fis.log.error('file did not pass linter[fis3-lint-htmlhint]');
   }
 };
