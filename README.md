@@ -4,7 +4,7 @@ A lint plugin for fis3 to validate html file.
 
 ## usage
 
-    $ npm install -g fis3-lint-htmlhint (not published yet)
+    $ npm install -g fis3-lint-htmlhin
 
 ```
 // fis-conf.js
@@ -32,7 +32,7 @@ fis.match('*.html', {
 [more options](https://github.com/yaniswang/HTMLHint/wiki/Usage)
 
 ## how to use .htmlhintrc
-it seems HTMLHint Module only support .htmlhintrc in cli, anyway we can use thishack
+it seems HTMLHint Module only support .htmlhintrc in cli, anyway we can use this hack
 ```
 // fis-conf.js
 
@@ -52,5 +52,6 @@ var htmlhintConf = {
 
 ## links
 fis3: [http://fis.baidu.com/](http://fis.baidu.com/)
+
 
 htmlhint: [http://htmlhint.com/](http://htmlhint.com/)

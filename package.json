@@ -1,11 +1,11 @@
 {
   "name": "fis3-lint-htmlhint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a html linter plugin of fis3 based on htmlhint",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com/fis3-lint-htmlhint.git"
+    "url": "https://github.com/fisker/fis3-lint-htmlhint.git"
   },
   "keywords": [
     "htmlhint",
