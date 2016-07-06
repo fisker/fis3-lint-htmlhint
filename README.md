@@ -1,6 +1,11 @@
-# fis3-lint-htmlhint
+# fis3-lint-htmlhint 
 
 A lint plugin for fis3 to validate html file.
+
+[![npm](https://img.shields.io/npm/v/fis3-lint-htmlhint.svg?style=flat-square)](https://www.npmjs.com/package/fis3-lint-htmlhint) 
+[![npm](https://img.shields.io/npm/dt/fis3-lint-htmlhint.svg?style=flat-square)](https://www.npmjs.com/package/fis3-lint-htmlhint) 
+[![npm](https://img.shields.io/npm/dm/fis3-lint-htmlhint.svg?style=flat-square)](https://www.npmjs.com/package/fis3-lint-htmlhint)
+
 
 ## usage
 
