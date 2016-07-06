@@ -11,7 +11,7 @@ module.exports = function(content, file, conf){
   }
 
   var ruleset = conf.rules;
-  var results = HTMLHint.verify(content, ruleset);
+  var results = HTMLHint.verify(content, ruleset || {});
   var errorCount = 0;
 
   results.forEach(function(msg) {

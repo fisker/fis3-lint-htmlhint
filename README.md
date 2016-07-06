@@ -50,13 +50,13 @@ function readConfig(file) {
       try {
         return JSON.parse(require('fs').readFileSync(filename, 'utf8'));
       }catch(_){
-        return null;
+        return;;
       }
     }
 
     parentFolder = path.resolve(currentFolder, '../');
     if (parentFolder === currentFolder) {
-      return null;
+      return;;
     }
     currentFolder = parentFolder;
   }
