@@ -32,11 +32,12 @@ fis.match('*.html', {
 [more options](https://github.com/yaniswang/HTMLHint/wiki/Usage)
 
 ## config with .htmlhintrc (Recommended)
-simply leave htmlhintConf.rules blank (null | undefined, not `{}``)
+simply leave htmlhintConf.rules blank (null OR undefined, NOT *{}*)
 ```
 // fis-conf.js
 var htmlhintConf = {};
 
+// or
 fis.match('*.html', {
   lint: fis.plugin('htmlhint')
 });
