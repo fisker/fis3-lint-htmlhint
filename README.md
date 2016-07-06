@@ -31,46 +31,18 @@ fis.match('*.html', {
 
 [more options](https://github.com/yaniswang/HTMLHint/wiki/Usage)
 
-## how to use .htmlhintrc
-it seems HTMLHint Module only support .htmlhintrc in cli, anyway we can use this hack
+## config with .htmlhintrc (Recommended)
+simply leave htmlhintConf.rules blank (null | undefined, not `{}``)
 ```
 // fis-conf.js
+var htmlhintConf = {};
 
-// first we create a function like this
-function readConfig(file) {
-  var fs = require('fs');
-  var path = require("path");
-  var currentFolder = process.cwd();
-  var filename = path.normalize(path.join(currentFolder, file));
-  var parentFolder;
-
-  while(true) {
-    filename = path.normalize(path.join(currentFolder, file));
-    if (fs.existsSync(filename)) {
-      try {
-        return JSON.parse(require('fs').readFileSync(filename, 'utf8'));
-      }catch(_){
-        return;;
-      }
-    }
-
-    parentFolder = path.resolve(currentFolder, '../');
-    if (parentFolder === currentFolder) {
-      return;;
-    }
-    currentFolder = parentFolder;
-  }
-}
-
-// then
-var htmlhintConf = {
-  rules: readConfig('.htmlhintrc'),
-};
+fis.match('*.html', {
+  lint: fis.plugin('htmlhint')
+});
 ```
-
 
 ## links
 fis3: [http://fis.baidu.com/](http://fis.baidu.com/)
-
 
 htmlhint: [http://htmlhint.com/](http://htmlhint.com/)
