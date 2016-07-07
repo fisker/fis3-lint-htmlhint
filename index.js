@@ -15,7 +15,6 @@ function readConfig(filename) {
   do {
     currentFolder = parentFolder || currentFolder;
     currentFile = path.normalize(path.join(currentFolder, filename));
-    console.log(currentFile);
 
     if (fs.existsSync(currentFile)) {
       try {
@@ -29,14 +28,14 @@ function readConfig(filename) {
   } while(parentFolder !== currentFolder);
 }
 
-var htmlrcConfig = readConfig('.htmlhintrcx');
+var htmlhintrcConfig = readConfig('.htmlhintrc');
 
 module.exports = function(content, file, conf){
   if (!content) {
     return;
   }
 
-  var ruleset = conf.rules || htmlrcConfig || {};
+  var ruleset = conf.rules || htmlhintrcConfig || {};
 
   var results = HTMLHint.verify(content, ruleset);
   var errorCount = {};
