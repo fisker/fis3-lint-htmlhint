@@ -5,53 +5,58 @@
 
 var HTMLHint = require('htmlhint').HTMLHint;
 
-function readConfig(file) {
+function readConfig(filename) {
   var fs = require('fs');
-  var path = require("path");
+  var path = require('path');
   var currentFolder = process.cwd();
-  var filename = path.normalize(path.join(currentFolder, file));
+  var currentFile;
   var parentFolder;
 
-  while(true) {
-    filename = path.normalize(path.join(currentFolder, file));
-    if (fs.existsSync(filename)) {
+  do {
+    currentFolder = parentFolder || currentFolder;
+    currentFile = path.normalize(path.join(currentFolder, filename));
+    console.log(currentFile);
+
+    if (fs.existsSync(currentFile)) {
       try {
-        return JSON.parse(require('fs').readFileSync(filename, 'utf8'));
+        return JSON.parse(require('fs').readFileSync(currentFile, 'utf8'));
       }catch(_){
         return;
       }
     }
 
     parentFolder = path.resolve(currentFolder, '../');
-    if (parentFolder === currentFolder) {
-      return;
-    }
-    currentFolder = parentFolder;
-  }
+  } while(parentFolder !== currentFolder);
 }
+
+var htmlrcConfig = readConfig('.htmlhintrcx');
 
 module.exports = function(content, file, conf){
   if (!content) {
     return;
   }
 
-  var ruleset = conf.rules || readConfig('.htmlhintrc');
+  var ruleset = conf.rules || htmlrcConfig || {};
 
-  var results = HTMLHint.verify(content, ruleset || {});
-  var errorCount = 0;
+  var results = HTMLHint.verify(content, ruleset);
+  var errorCount = {};
 
   results.forEach(function(msg) {
-    if (msg.type === 'error') {
-      errorCount ++;
-    }
+    errorCount[msg.type] = errorCount[msg.type] || 0;
+    errorCount[msg.type] ++;
   });
 
   if (results.length) {
     console.log(HTMLHint.format(results));
   }
 
-  if (errorCount) {
-    fis.log.error('file did not pass linter[fis3-lint-htmlhint]');
+  if (errorCount.error) {
+    fis.log.error('file lint failed with error [fis3-lint-htmlhint]');
+    process.exit(1);
+  }
+
+  if (errorCount.warning) {
+    fis.log.warn('file lint failed with warning [fis3-lint-htmlhint]');
   }
 };
 
