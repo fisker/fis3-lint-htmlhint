@@ -28,14 +28,14 @@ function readConfig(filename) {
   } while(parentFolder !== currentFolder);
 }
 
-var htmlhintrcConfig = readConfig('.htmlhintrc');
+var htmlhintrcConfig;
 
 module.exports = function(content, file, conf){
   if (!content) {
     return;
   }
 
-  var ruleset = conf.rules || htmlhintrcConfig || {};
+  var ruleset = conf.rules || htmlhintrcConfig || (htmlhintrcConfig = readConfig('.htmlhintrc') || {});
 
   var results = HTMLHint.verify(content, ruleset);
   var errorCount = {};
