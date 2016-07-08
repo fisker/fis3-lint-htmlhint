@@ -19,13 +19,13 @@ function readConfig(filename) {
     if (fs.existsSync(currentFile)) {
       try {
         return JSON.parse(require('fs').readFileSync(currentFile, 'utf8'));
-      }catch(_){
+      } catch(_) {
         return;
       }
     }
 
     parentFolder = path.resolve(currentFolder, '../');
-  } while (parentFolder !== currentFolder);
+  } while (parentFolder !== currentFolder)
 }
 
 var htmlhintrcConfig;
@@ -41,14 +41,14 @@ module.exports = function(content, file, conf){
   var errorType = 'warning';
 
   results.forEach(function(msg) {
-    if (msg.type == 'error') {
+    if (msg.type === 'error') {
       errorType = 'error';
     }
   });
 
   if (results.length) {
     fis.log.warn(
-      '[%s] lint failed with %s \n\n %s',
+      '[%s] lint failed with %s: \n\n %s',
       file.id,
       errorType,
       HTMLHint.format(results, {indent: 2}).join('\n')
