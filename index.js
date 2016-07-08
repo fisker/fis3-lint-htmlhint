@@ -25,7 +25,7 @@ function readConfig(filename) {
     }
 
     parentFolder = path.resolve(currentFolder, '../');
-  } while(parentFolder !== currentFolder);
+  } while (parentFolder !== currentFolder);
 }
 
 var htmlhintrcConfig;
@@ -38,25 +38,23 @@ module.exports = function(content, file, conf){
   var ruleset = conf.rules || htmlhintrcConfig || (htmlhintrcConfig = readConfig('.htmlhintrc') || {});
 
   var results = HTMLHint.verify(content, ruleset);
-  var errorCount = {};
+  var errorType = 'warning';
 
   results.forEach(function(msg) {
-    errorCount[msg.type] = errorCount[msg.type] || 0;
-    errorCount[msg.type] ++;
+    if (msg.type == 'error') {
+      errorType = 'error';
+    }
   });
 
   if (results.length) {
-    console.log(HTMLHint.format(results));
-  }
-
-  if (errorCount.error) {
-    fis.log.error('file lint failed with error [fis3-lint-htmlhint]');
-    process.exit(1);
-  }
-
-  if (errorCount.warning) {
-    fis.log.warn('file lint failed with warning [fis3-lint-htmlhint]');
+    fis.log.warn(
+      '[%s] lint failed with %s \n\n %s',
+      file.id,
+      errorType,
+      HTMLHint.format(results, {indent: 2}).join('\n')
+    );
+    if (errorType === 'error') {
+      process.exit(1);
+    }
   }
 };
-
-
