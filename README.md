@@ -14,6 +14,17 @@ A lint plugin for fis3 to validate html file.
 ```
 // fis-conf.js
 
+// config with .htmlhintrc file (Recommended)
+var htmlhintConf = {
+  // key `rules` should be falsy
+}; 
+
+fis.match('*.html', {
+  lint: fis.plugin('htmlhint', htmlhintConf);
+});
+
+
+// config with inline rules
 var htmlhintConf = {
   rules: {
     "tagname-lowercase": true,
@@ -34,21 +45,8 @@ fis.match('*.html', {
 });
 ```
 
-[more options](https://github.com/yaniswang/HTMLHint/wiki/Usage)
-
-## config with .htmlhintrc (Recommended)
-simply leave htmlhintConf.rules blank (null OR undefined, NOT *{}*)
-```
-// fis-conf.js
-var htmlhintConf = {};
-
-// or
-fis.match('*.html', {
-  lint: fis.plugin('htmlhint')
-});
-```
+[more options](https://github.com/yaniswang/HTMLHint/wiki/Rules)
 
 ## links
 fis3: [http://fis.baidu.com/](http://fis.baidu.com/)
-
 htmlhint: [http://htmlhint.com/](http://htmlhint.com/)

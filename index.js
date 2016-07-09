@@ -4,6 +4,7 @@
  */
 
 var HTMLHint = require('htmlhint').HTMLHint;
+var log = (global.fis && fis.log) || console;
 
 function readConfig(filename) {
   var fs = require('fs');
@@ -47,11 +48,11 @@ module.exports = function(content, file, conf){
   });
 
   if (results.length) {
-    fis.log.warn(
+    log.warn(
       '[%s] lint failed with %s: \n\n %s',
       file.id,
       errorType,
-      HTMLHint.format(results, {indent: 2}).join('\n')
+      HTMLHint.format(results, {colors: true, indent: 2}).join('\n')
     );
     if (errorType === 'error') {
       process.exit(1);
