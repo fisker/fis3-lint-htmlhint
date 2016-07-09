@@ -52,7 +52,7 @@ module.exports = function(content, file, conf){
       '[%s] lint failed with %s: \n\n %s',
       file.id,
       errorType,
-      HTMLHint.format(results, {colors: true, indent: 2}).join('\n')
+      HTMLHint.format(results, {indent: 2}).join('\n')
     );
     if (errorType === 'error') {
       process.exit(1);
