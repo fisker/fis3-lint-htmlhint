@@ -16,7 +16,7 @@
     "fis",
     "fis3"
   ],
-  "author": "fisker Cheung",
+  "author": "fisker Cheung <lionkay@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "htmlhint": "^0.9.13"
