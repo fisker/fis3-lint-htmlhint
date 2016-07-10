@@ -39,14 +39,10 @@ var htmlhintConf = {
     "title-require": true
   }
 };
-
-fis.match('*.html', {
-  lint: fis.plugin('htmlhint', htmlhintConf)
-});
 ```
-
-[more options](https://github.com/yaniswang/HTMLHint/wiki/Rules)
+rules: [https://github.com/yaniswang/HTMLHint/wiki/Rules]
 
 ## links
 fis3: [http://fis.baidu.com/](http://fis.baidu.com/)
+
 htmlhint: [http://htmlhint.com/](http://htmlhint.com/)
